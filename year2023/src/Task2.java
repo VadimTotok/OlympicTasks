@@ -1,5 +1,3 @@
-package year2023.src;
-
 import java.util.Scanner;
 
 public class Task2 {
