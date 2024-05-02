@@ -1,28 +1,34 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Task3 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-        int n = scanner.nextInt();
-        char[] s = scanner.next().toCharArray();
+        int n = sc.nextInt();
+        int[] s = new int[n];
+        String input = sc.next();
+        for (int i = 0; i < n; i++) {
+            s[i] = input.charAt(i) - '0';
+        }
 
         int l = 0;
-        int r = n - 1;
+        int r = n;
 
         while (l <= r) {
-            char[] sClone = s.clone();
+            int[] sClone = s.clone();
+            int[] array = new int[r - l];
 
-            for (int i = l; i <= r; i++) {
-                if (sClone[i] == '1') {
-                    sClone[i] = '0';
-                } else {
-                    sClone[i] = '1';
-                }
+            for (int i = 0; i < array.length; i++) {
+                array[i] = sClone[l + i];
+                array[i] = (array[i] == 1) ? 0 : 1;
             }
 
-            if (isEqual(sClone, sClone[0], n)) {
-                System.out.println((l + 1) + " " + (r + 1));
+            System.arraycopy(array, 0, sClone, l, array.length);
+            int sum = Arrays.stream(Arrays.copyOfRange(sClone, 0, n)).sum();
+
+            if (sum == 0 || sum == n) {
+                System.out.printf("%d %d%n", (l + 1), r);
                 return;
             }
 
@@ -31,14 +37,5 @@ public class Task3 {
         }
 
         System.out.println("-1");
-    }
-
-    private static boolean isEqual(char[] arr, char value, int n) {
-        for (int i = 0; i < n; i++) {
-            if (arr[i] != value) {
-                return false;
-            }
-        }
-        return true;
     }
 }
