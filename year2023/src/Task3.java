@@ -8,9 +8,7 @@ public class Task3 {
         int n = sc.nextInt();
         int[] s = new int[n];
         String input = sc.next();
-        for (int i = 0; i < n; i++) {
-            s[i] = input.charAt(i) - '0';
-        }
+        for (int i = 0; i < n; i++) s[i] = input.charAt(i) - '0';
 
         int l = 0;
         int r = n;

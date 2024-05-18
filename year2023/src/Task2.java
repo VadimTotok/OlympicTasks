@@ -11,12 +11,10 @@ public class Task2 {
 
         int[] qArray = new int[m + n];
 
-        for (int i = 0; i < n; i++)
-            qArray[i + m] = q * (i + 1);
+        for (int i = 0; i < n; i++) qArray[i + m] = q * (i + 1);
 
         int tm = 0;
-        for (int elem : qArray)
-            tm = Math.max(tm, elem) + t;
+        for (int elem : qArray) tm = Math.max(tm, elem) + t;
 
         System.out.println(tm);
     }
